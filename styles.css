@@ -32,7 +32,8 @@ body, a:link, a:visited, a:active{
 
 .ninjaPic{
   background-image:url(http://www.motoringunderground.com/forum/images/smiles001/ninja_hide_h4h.gif);
-}
+/*  background-image:url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBG11xWCQAqxuBZrokT75CakpTjn7LQDY0PEO6y8-5ZozOgYBRaA);
+*/}
 
 .twirly {
    border-top: 20px;

@@ -1,6 +1,12 @@
 $(document).ready(function(){
   window.dancers = [];
 
+  $("button").on("click", function (event) {
+    window.dancers.forEach(function (value) {
+      value.lineUp();
+    });
+  });
+
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on index.html. You should only need to make one small change to it.
@@ -27,6 +33,8 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+    window.dancers.push(dancer);
+
     $('body').append(dancer._$node);
   });
 });

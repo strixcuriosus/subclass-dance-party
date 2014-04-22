@@ -21,3 +21,11 @@ Dancer.prototype.setPosition = function (top, left) {
     };
     this._$node.css(styleSettings);
 };
+
+Dancer.prototype.lineUp = function() {
+  var styleSettings = {
+    left: 0
+  };
+
+  this._$node.css(styleSettings);
+};
