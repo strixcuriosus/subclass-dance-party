@@ -5,6 +5,7 @@ body{
   margin: 0px;
   background-color:#444;
   font-size: 18px;
+  overflow: hidden;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -24,4 +25,62 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+.ninja{
+  border:10px solid black;
+}
+
+.ninjaPic{
+  background-image:url(http://www.motoringunderground.com/forum/images/smiles001/ninja_hide_h4h.gif);
+}
+
+.twirly {
+   border-top: 20px;
+   margin: 12.5px 0;
+   position: relative;
+   display: block;
+   /*color: red;*/
+   width: 0px;
+   height: 0px;
+   border-right:  25px solid transparent;
+   border-bottom: 17.25px  solid;
+   border-left:   25px solid transparent;
+   -moz-transform:    rotate(35deg);
+   -webkit-transform: rotate(35deg);
+   -ms-transform:     rotate(35deg);
+   -o-transform:      rotate(35deg);
+}
+.twirly:before {
+   border-bottom: 20px solid;
+   border-left: 7.5px solid transparent;
+   border-right: 7.5px solid transparent;
+   position: absolute;
+   height: 0;
+   width: 0;
+   top: -11.25px;
+   left: -16.25px;
+   display: block;
+   content: '';
+   -webkit-transform: rotate(-35deg);
+   -moz-transform:    rotate(-35deg);
+   -ms-transform:     rotate(-35deg);
+   -o-transform:      rotate(-35deg);
+
+}
+.twirly:after {
+   position: absolute;
+   display: block;
+   /*color: red;*/
+   top: .75px;
+   left: -25.125px;
+   width: 0px;
+   height: 0px;
+   border-right: 25px solid transparent;
+   border-bottom: 17.5px solid ;
+   border-left: 25px solid transparent;
+   -webkit-transform: rotate(-70deg);
+   -moz-transform:    rotate(-70deg);
+   -ms-transform:     rotate(-70deg);
+   -o-transform:      rotate(-70deg);
+   content: '';
 }
