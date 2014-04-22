@@ -1,9 +1,9 @@
-var TwirlyDancer = function (top, left, timeBetweenSteps) {
+var TwirlyDancer = function (top, left, timeBetweenSteps, dancers) {
   timeBetweenSteps = 50;
   this._color = [Math.floor(Math.random() * 255),Math.floor(Math.random() * 255),
    Math.floor(Math.random() * 255)];
   this._degrees = 180;
-  Dancer.call(this, top, left, timeBetweenSteps);
+  Dancer.call(this, top, left, timeBetweenSteps, dancers);
   this._$node.addClass("twirly");
 
 };

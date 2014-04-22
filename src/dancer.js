@@ -1,8 +1,11 @@
-var Dancer = function (top, left, timeBetweenSteps) {
+var Dancer = function (top, left, timeBetweenSteps, dancers) {
+  this._dancers = dancers;
   this._$node = $('<span class="dancer"></span>');
   this._timeBetweenSteps =  timeBetweenSteps;
   this.step();
   this.setPosition(top, left);
+  this._top = top;
+  this._left = left;
 };
 
 Dancer.prototype.step = step = function () {
@@ -28,4 +31,26 @@ Dancer.prototype.lineUp = function() {
   };
 
   this._$node.css(styleSettings);
+};
+
+Dancer.prototype.findNearest = function (type) {
+  var nearest;
+  var nearestLength = 99999;
+  var self = this;
+  this._dancers.forEach(function(dancer){
+    var deltaX = self._top - dancer._top;
+    var deltaY = self._left - dancer._left;
+
+    var distance = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+
+    if (distance < nearestLength && distance > 0) {
+      if( typeof dancer !== type) {
+        nearest = dancer;
+        nearestLength = distance;
+      }
+    }
+
+  });
+
+  return nearest;
 };

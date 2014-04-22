@@ -31,8 +31,12 @@ $(document).ready(function(){
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random() * 1000
+      Math.random() * 1000,
+      window.dancers
     );
+    dancer._$node.on('mouseover', function (event){
+      dancer._$node.fadeOut(500);
+    });
     window.dancers.push(dancer);
 
     $('body').append(dancer._$node);
