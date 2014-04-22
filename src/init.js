@@ -1,10 +1,28 @@
 $(document).ready(function(){
   window.dancers = [];
 
-  $("button").on("click", function (event) {
+  $("button.lineup").on("click", function (event) {
+
     window.dancers.forEach(function (value) {
       value.lineUp();
+      value._isConga = true;
+
     });
+  });
+
+  $("button.conga").on("click", function (event) {
+
+    var leadDancer = dancers[0];
+    var x = leadDancer._left + 5;
+    var y = leadDancer._top + 5;
+    leadDancer.setPosition(y, x);
+    leadDancer._isConga = true;
+    for(var i = 1; i < dancers.length; i++) {
+      dancers[i]._isConga = true;
+      x = x - 20;
+      y = y - 20;
+      dancers[i].setPosition(y, x);
+    }
   });
 
   $(".addDancerButton").on("click", function(event){
@@ -34,9 +52,19 @@ $(document).ready(function(){
       Math.random() * 1000,
       window.dancers
     );
-    dancer._$node.on('mouseover', function (event){
-      dancer._$node.fadeOut(500);
+    // debugger;
+    dancer._$node.on('mouseenter', function (event){
+
+      dancer._$node.addClass("rotate");
     });
+    dancer._$node.on('mouseleave', function (event){
+      dancer._$node.removeClass("rotate");
+    });
+    if (dancer instanceof TwirlyDancer) {
+      dancer._$node.on('click', function () {
+        dancer._$node.toggleClass("spin");
+      });
+    }
     window.dancers.push(dancer);
 
     $('body').append(dancer._$node);

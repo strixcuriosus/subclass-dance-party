@@ -36,6 +36,40 @@ body, a:link, a:visited, a:active{
 /*  background-image:url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBG11xWCQAqxuBZrokT75CakpTjn7LQDY0PEO6y8-5ZozOgYBRaA);
 */}
 
+@-webkit-keyframes spinningH {
+  from {
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+  }
+  to{
+    -webkit-transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+.blinky1 {
+  border: none;
+  height: 96px;
+  width: 96px;
+  /*background-image: url(https://yt3.ggpht.com/-q80-commP2Y/AAAAAAAAAAI/AAAAAAAAAAA/AFU4BTJmgvo/s48-c-k-no/photo.jpg);*/
+  background-image: url(https://lh4.ggpht.com/ebCTWMy66QahSOCj1uuxZ9_ye6jK1sFxJNIqgXPmYDV13WZcDqJ9XtCTRihKQ2icE3mVWc0r5OM4yrlMw8d9rw=s96);
+  -webkit-transform: rotate3d(0, 0, 1, 15deg);
+}
+
+.rotate, .spin {
+  /*-webkit-transform: rotate3d(0, 1, 0, 15deg);*/
+  -webkit-animation : spinningH 6s infinite linear;
+}
+
+/*http://sherpapreview-standard.s3-website-us-east-1.amazonaws.com/Preview/2012/08/15__00_19_43/10474_Front.jpg00d8a13a-ed34-4381-b307-00023ae530aaSmall.jpg*/
+
+/*https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlbcKYSSmgX_-f3cqWza0tAHrOUkqEsQDf6wKE1gHFfLmAuOg00sc9Tw*/
+.blinky2 {
+
+}
+
+.blinky3 {
+
+}
+
 .twirly {
    border-top: 20px;
    margin: 12.5px 0;
