@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  /*background-color:#444;*/
+  background-image: url(images/galaxy.jpg);
   font-size: 18px;
   /*overflow: hidden;*/
 }

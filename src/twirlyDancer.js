@@ -15,5 +15,5 @@ TwirlyDancer.prototype.step = function () {
   this._$node.css("color", "rgb(" + this._color.join(",") + ")" );
   this._$node.css("transform", "rotate(" + this._degrees + "deg)");
   this._degrees = (1 + this._degrees) % 360;
-  // this._$node.rotate(5);
+
 };

@@ -37,7 +37,9 @@ Dancer.prototype.findNearest = function (type) {
   var nearest;
   var nearestLength = 99999;
   var self = this;
+  debugger;
   this._dancers.forEach(function(dancer){
+    debugger;
     var deltaX = self._top - dancer._top;
     var deltaY = self._left - dancer._left;
 
