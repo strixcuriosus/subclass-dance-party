@@ -59,9 +59,19 @@ Dancer.prototype.step = function () {
   // the basic dancer doesn't do anything interesting at all on each step,
   // it just schedules the next step
   var self = this;
-  setTimeout(function () {
+  if(this._isConga){
+    setTimeout(function () {
+      // debugger;
+    self._left = (100 + self._left) % $(window).width();
+    self._top = (100 + self._top) % $(window).height();
+    self.setPosition(self._top, self._left);
     self.step();
-  }, this._timeBetweenSteps);
+    }, 1000);
+  } else {
+    setTimeout(function () {
+      self.step();
+    }, this._timeBetweenSteps);
+  }
 };
 
 
