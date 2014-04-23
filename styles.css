@@ -2,22 +2,20 @@ body, html{
   height:100%;
 }
 body{
-  margin: 0px;
-  /*background-color:#444;*/
   background-image: url(images/galaxy.jpg);
   font-size: 18px;
-  /*overflow: hidden;*/
+  margin: 0px;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
 .title, .addDancerButton{
-  padding:5px 12px;
   float:right;
+  padding:5px 12px;
 }
 .topbar{
-  height:32px;
   background-color: #555;
+  height:32px;
 }
 .title{
   background-color: #777;
@@ -33,8 +31,7 @@ body, a:link, a:visited, a:active{
 
 .ninjaPic{
   background-image:url(http://www.motoringunderground.com/forum/images/smiles001/ninja_hide_h4h.gif);
-/*  background-image:url(https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQBG11xWCQAqxuBZrokT75CakpTjn7LQDY0PEO6y8-5ZozOgYBRaA);
-*/}
+}
 
 @-webkit-keyframes spinningH {
   from {
@@ -45,58 +42,39 @@ body, a:link, a:visited, a:active{
   }
 }
 
-.blinky1 {
+.spaceship {
+  background-image: url(https://lh4.ggpht.com/ebCTWMy66QahSOCj1uuxZ9_ye6jK1sFxJNIqgXPmYDV13WZcDqJ9XtCTRihKQ2icE3mVWc0r5OM4yrlMw8d9rw=s96);
   border: none;
   height: 96px;
-  width: 96px;
-  /*background-image: url(https://yt3.ggpht.com/-q80-commP2Y/AAAAAAAAAAI/AAAAAAAAAAA/AFU4BTJmgvo/s48-c-k-no/photo.jpg);*/
-  background-image: url(https://lh4.ggpht.com/ebCTWMy66QahSOCj1uuxZ9_ye6jK1sFxJNIqgXPmYDV13WZcDqJ9XtCTRihKQ2icE3mVWc0r5OM4yrlMw8d9rw=s96);
   -webkit-transform: rotate3d(0, 0, 1, 15deg);
+  width: 96px;
 }
 
 .rotate, .spin {
-  /*-webkit-transform: rotate3d(0, 1, 0, 15deg);*/
   -webkit-animation : spinningH 6s infinite linear;
-}
-
-/*http://sherpapreview-standard.s3-website-us-east-1.amazonaws.com/Preview/2012/08/15__00_19_43/10474_Front.jpg00d8a13a-ed34-4381-b307-00023ae530aaSmall.jpg*/
-
-/*https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSlbcKYSSmgX_-f3cqWza0tAHrOUkqEsQDf6wKE1gHFfLmAuOg00sc9Tw*/
-.blinky2 {
-
-}
-
-.blinky3 {
-
 }
 
 .twirly {
    border-top: 20px;
-   margin: 12.5px 0;
-   /*position: relative;*/
-   display: block;
-   /*color: red;*/
-   width: 0px;
-   height: 0px;
    border-right:  25px solid transparent;
    border-bottom: 17.25px  solid;
    border-left:   25px solid transparent;
+   display: block;
+   margin: 12.5px 0;
    -moz-transform:    rotate(35deg);
    -webkit-transform: rotate(35deg);
    -ms-transform:     rotate(35deg);
    -o-transform:      rotate(35deg);
 }
 .twirly:before {
+   border-right: 7.5px solid transparent;
    border-bottom: 20px solid;
    border-left: 7.5px solid transparent;
-   border-right: 7.5px solid transparent;
+   content: '';
+   display: block;
    position: absolute;
-   height: 0;
-   width: 0;
    top: -11.25px;
    left: -16.25px;
-   display: block;
-   content: '';
    -webkit-transform: rotate(-35deg);
    -moz-transform:    rotate(-35deg);
    -ms-transform:     rotate(-35deg);
@@ -104,19 +82,16 @@ body, a:link, a:visited, a:active{
 
 }
 .twirly:after {
-   position: absolute;
-   display: block;
-   /*color: red;*/
-   top: .75px;
-   left: -25.125px;
-   width: 0px;
-   height: 0px;
    border-right: 25px solid transparent;
    border-bottom: 17.5px solid ;
    border-left: 25px solid transparent;
+   content: '';
+   display: block;
+   position: absolute;
+   top: .75px;
+   left: -25.125px;
    -webkit-transform: rotate(-70deg);
    -moz-transform:    rotate(-70deg);
    -ms-transform:     rotate(-70deg);
    -o-transform:      rotate(-70deg);
-   content: '';
 }
