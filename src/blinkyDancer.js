@@ -1,19 +1,43 @@
-var makeBlinkyDancer = function(top, left, timeBetweenSteps){
-  var blinkyDancer = makeDancer(top, left, timeBetweenSteps);
+var BlinkyDancer = function (top, left, timeBetweenSteps, dancers) {
+  Dancer.call(this, top, left, timeBetweenSteps, dancers);
 
-  // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
-  // so we must keep a copy of the old version of this function
-
-  var oldStep = blinkyDancer.step;
-
-  blinkyDancer.step = function(){
-    // call the old version of step at the beginning of any call to this new version of step
-    oldStep();
-    // toggle() is a jQuery method to show/hide the <span> tag.
-    // See http://api.jquery.com/category/effects/ for this and
-    // other effects you can use on a jQuery-wrapped html tag.
-    blinkyDancer.$node.toggle();
-  };
-
-  return blinkyDancer;
+  this._$node.addClass("spaceship");
 };
+// Setting up delegation to Dancer
+BlinkyDancer.prototype = Object.create(Dancer.prototype);
+BlinkyDancer.prototype.constructor = BlinkyDancer;
+
+// Shadow methods
+BlinkyDancer.prototype.step = function () {
+  var NON_EXISTANT = undefined;
+  var MAX_RADIUS = 500;
+  var PX = "px";
+
+  Dancer.prototype.step.call(this);
+
+
+  var nearestTwirlyDancer = this.findNearest(TwirlyDancer);
+
+  if(nearestTwirlyDancer !== NON_EXISTANT && !this._isConga){
+    var verticalDistance = this._top - nearestTwirlyDancer._top;
+    var horizontalDistance = this._left - nearestTwirlyDancer._left;
+
+    var radius = Math.sqrt(Math.pow(horizontalDistance, 2) + Math.pow(verticalDistance, 2));
+
+    var angle  = Math.atan(verticalDistance/horizontalDistance);
+    // increment angle
+    angle += Math.PI/16;
+
+    if (radius < MAX_RADIUS && !this._isConga){
+      this._top = Math.abs(nearestTwirlyDancer._top - radius * Math.cos(angle));
+      this._left = Math.abs(nearestTwirlyDancer._left - radius * Math.sin(angle));
+      this._$node.animate({
+        top:this._top + PX,
+        left:this._left + PX
+      });
+    }
+  }
+};
+
+
+

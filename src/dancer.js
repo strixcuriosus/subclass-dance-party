@@ -1,33 +1,77 @@
-// Creates and returns a new dancer object that can step
-var makeDancer = function(top, left, timeBetweenSteps){
+var Dancer = function (top, left, timeBetweenSteps, dancers) {
+  this._$node = $('<span class="dancer"></span>');
+  this._isConga = false;
+  this._top = top;
+  this._left = left;
+  this._timeBetweenSteps =  timeBetweenSteps;
+  this._dancers = dancers;
+  this.step();
+  this.setPosition(top, left);
+};
 
-  var dancer = {};
+Dancer.prototype.findNearest = function (dancerType) {
+  var MAX_RADIUS = 400;
+  var NO_DISTANCE = 0;
+  var nearestDancer;
+  var nearestLength = MAX_RADIUS;
+  var self = this;
 
-  // use jQuery to create an HTML <span> tag
-  dancer.$node = $('<span class="dancer"></span>');
+  this._dancers.forEach(function(dancer){
 
+    var verticalDistance = self._top - dancer._top;
+    var horizontalDistance = self._left - dancer._left;
 
-  dancer.step = function(){
-    // the basic dancer doesn't do anything interesting at all on each step,
-    // it just schedules the next step
-    setTimeout(dancer.step, timeBetweenSteps);
+    var totalDistance = Math.sqrt(Math.pow(horizontalDistance, 2) + Math.pow(verticalDistance, 2));
+
+    if (totalDistance < nearestLength && totalDistance > NO_DISTANCE) {
+      if( dancer instanceof dancerType) {
+        nearestDancer = dancer;
+        nearestLength = totalDistance;
+      }
+    }
+
+  });
+
+  return nearestDancer;
+};
+
+Dancer.prototype.lineUp = function() {
+  var LEFT_EDGE_OF_WINDOW = 0;
+
+  var styleSettings = {
+    left: LEFT_EDGE_OF_WINDOW
   };
-  dancer.step();
+  this._left = LEFT_EDGE_OF_WINDOW;
+  this._$node.css(styleSettings);
+};
 
-  dancer.setPosition = function(top, left){
-    // Use css top and left properties to position our <span> tag
-    // where it belongs on the page. See http://api.jquery.com/css/
-    //
-    var styleSettings = {
+Dancer.prototype.setPosition = function (top, left) {
+  var styleSettings = {
       top: top,
       left: left
     };
-    dancer.$node.css(styleSettings);
-  };
-
-  // now that we have defined the dancer object, we can start setting up important parts of it by calling the methods we wrote
-  // this one sets the position to some random default point within the body
-  dancer.setPosition(top, left);
-
-  return dancer;
+  this._top = top;
+  this._left = left;
+  this._$node.css(styleSettings);
 };
+
+Dancer.prototype.step = function () {
+  // the basic dancer doesn't do anything interesting at all on each step,
+  // it just schedules the next step
+  var self = this;
+  if(this._isConga){
+    setTimeout(function () {
+      // debugger;
+    self._left = (100 + self._left) % $(window).width();
+    self._top = (100 + self._top) % $(window).height();
+    self.setPosition(self._top, self._left);
+    self.step();
+    }, 1000);
+  } else {
+    setTimeout(function () {
+      self.step();
+    }, this._timeBetweenSteps);
+  }
+};
+
+
